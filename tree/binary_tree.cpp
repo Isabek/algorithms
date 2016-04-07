@@ -40,6 +40,24 @@ void inOrder(TreeNode *tree){
 	}
 }
 
+bool binarySearch(TreeNode *tree, int value){
+	if(tree == NULL){
+		return false;
+	}
+
+	if(tree->value == value){
+		return true;
+	}
+
+	if(tree->value > value){
+		return binarySearch(tree->left, value);
+	}
+
+	if(tree->value < value){
+		return binarySearch(tree->right, value);
+	}
+}
+
 int main()
 {
 	TreeNode *binaryTree = NULL;
@@ -53,6 +71,10 @@ int main()
 	printf("\n");
 	inOrder(binaryTree);
 	printf("\n");
-	
+
+	for(int i = 0; i < 7; i ++){
+		printf("%d\n", binarySearch(binaryTree, a[i]));
+	}
+
 	return 0;
 }
